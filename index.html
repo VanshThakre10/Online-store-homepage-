@@ -441,6 +441,54 @@
             </div>
         </section>
 
+        <!-- ============================== -->
+        <!-- STEP 6: PROMOTIONAL BANNER     -->
+        <!-- ============================== -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+            <div class="relative rounded-3xl overflow-hidden bg-slate-900 shadow-2xl flex flex-col md:flex-row items-center justify-between group">
+                <!-- Background decorative elements -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute -top-[50%] -right-[10%] w-[70%] h-[150%] bg-gradient-to-b from-primary/20 to-transparent rotate-12 blur-3xl transform group-hover:rotate-45 transition-transform duration-700"></div>
+                    <div class="absolute -bottom-[50%] -left-[10%] w-[50%] h-[150%] bg-gradient-to-t from-accent/20 to-transparent -rotate-12 blur-3xl transform group-hover:-rotate-45 transition-transform duration-700"></div>
+                </div>
+
+                <div class="relative z-10 w-full md:w-1/2 p-8 sm:p-12 text-white space-y-6">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-accent/20 text-accent text-xs font-bold tracking-wider uppercase border border-accent/20">
+                        Limited Time Offer
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+                        Get 20% Off Your First Purchase
+                    </h2>
+                    <p class="text-slate-300 text-lg">
+                        Subscribe to our newsletter and receive an exclusive discount code instantly. Plus, get updates on new arrivals and sales.
+                    </p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-3 mt-4 relative z-20" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                        <input type="email" placeholder="Enter your email address" required
+                            class="flex-1 bg-white/10 border border-white/20 rounded-xl py-3 px-5 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all backdrop-blur-sm">
+                        <button type="submit" class="bg-primary hover:bg-primaryHover text-white px-8 py-3 rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(79,70,229,0.3)] hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] whitespace-nowrap transform hover:-translate-y-1">
+                            Subscribe Now
+                        </button>
+                    </form>
+                    <p class="text-[10px] text-slate-500 mt-2">By subscribing, you agree to our Terms of Service and Privacy Policy.</p>
+                </div>
+                
+                <div class="relative z-10 w-full md:w-1/2 min-h-[300px] flex items-center justify-center p-8 overflow-hidden">
+                    <div class="relative w-full max-w-sm aspect-square">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/40 to-accent/40 rounded-full blur-3xl animate-pulse"></div>
+                        <!-- We use an abstract 3D shape or product composition image here -->
+                        <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Special Offer" class="absolute inset-0 w-full h-full object-cover rounded-2xl drop-shadow-2xl hover:scale-105 transition-transform duration-700 z-10 border border-white/10 rotate-3 hover:rotate-0">
+                        
+                        <!-- Floating discount badge -->
+                        <div class="absolute -top-4 -right-4 bg-accent text-white w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold shadow-xl z-20 shadow-accent/40 animate-bounce cursor-default">
+                            <span class="text-2xl leading-none">20%</span>
+                            <span class="text-xs uppercase">OFF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- Custom JS -->
