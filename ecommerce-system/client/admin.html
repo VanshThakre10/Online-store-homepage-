@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoreX Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#4f46e5' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-900 text-white flex flex-col">
+        <div class="h-16 flex items-center justify-center border-b border-gray-800">
+            <h1 class="text-xl font-bold">Admin Panel</h1>
+        </div>
+        <nav class="flex-1 py-4">
+            <a href="#" onclick="showSection('ordersSection')" class="block px-6 py-3 hover:bg-gray-800 transition">Orders</a>
+            <a href="#" onclick="showSection('productsSection')" class="block px-6 py-3 hover:bg-gray-800 transition">Products</a>
+            <a href="/" class="block px-6 py-3 text-gray-400 hover:text-white mt-auto border-t border-gray-800 absolute bottom-0 w-64 hover:bg-gray-800 transition">Return to Store</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-8">
+            <h2 id="pageTitle" class="text-xl font-bold text-gray-800">Dashboard Overview</h2>
+            <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold shadow hover:bg-indigo-700 transition">Logout</button>
+        </header>
+        
+        <div class="flex-1 overflow-y-auto p-8">
+            
+            <!-- Orders Section -->
+            <section id="ordersSection" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900">Manage Orders</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead class="bg-gray-50 text-gray-600 border-b">
+                            <tr>
+                                <th class="p-4 font-semibold text-xs tracking-wide uppercase">Order ID</th>
+                                <th class="p-4 font-semibold text-xs tracking-wide uppercase">Customer</th>
+                                <th class="p-4 font-semibold text-xs tracking-wide uppercase">Total</th>
+                                <th class="p-4 font-semibold text-xs tracking-wide uppercase">Status</th>
+                                <th class="p-4 font-semibold text-xs tracking-wide uppercase">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody" class="divide-y divide-gray-100">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Products Section (Hidden Default) -->
+            <section id="productsSection" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hidden">
+                <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-gray-900">Manage Products</h3>
+                    <button onclick="toggleProductModal()" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold shadow hover:bg-indigo-700 transition">+ Add Product</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6" id="adminProductsGrid">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modalTitle" class="text-xl font-bold">Add Product</h2>
+                <button onclick="toggleProductModal()" class="text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+            </div>
+            <form id="productForm" onsubmit="saveProduct(event)" class="space-y-4">
+                <input type="hidden" id="prodId">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Name</label>
+                        <input type="text" id="prodName" required class="w-full border rounded px-3 py-2 outline-none focus:border-primary">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Category</label>
+                        <input type="text" id="prodCat" required class="w-full border rounded px-3 py-2 outline-none focus:border-primary">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Price</label>
+                        <input type="number" id="prodPrice" step="0.01" required class="w-full border rounded px-3 py-2 outline-none focus:border-primary">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Image URL</label>
+                        <input type="url" id="prodImg" required class="w-full border rounded px-3 py-2 outline-none focus:border-primary">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="prodDesc" rows="3" required class="w-full border rounded px-3 py-2 outline-none focus:border-primary"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-2 rounded-lg font-bold">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+</body>
+</html>

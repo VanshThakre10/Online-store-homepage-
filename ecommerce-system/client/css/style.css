@@ -1,0 +1,10 @@
+/* Custom CSS for additional tweaks */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Add custom animations here if complex ones are needed */
